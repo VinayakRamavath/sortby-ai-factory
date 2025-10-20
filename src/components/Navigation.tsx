@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/sortby-logo.jpeg";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -49,24 +54,61 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="relative group"
-              >
-                <span className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-300">
-                  {link.name}
-                </span>
-                {location.pathname === link.path && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              if (link.name === "Products") {
+                return (
+                  <Popover key={link.path}>
+                    <PopoverTrigger className="relative group flex items-center gap-1">
+                      <span className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-300">
+                        {link.name}
+                      </span>
+                      <ChevronDown className="w-4 h-4 text-foreground/80 group-hover:text-primary transition-colors duration-300" />
+                      {(location.pathname === "/products/suvira" || location.pathname === "/products/pulse") && (
+                        <motion.div
+                          layoutId="activeNav"
+                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                        />
+                      )}
+                    </PopoverTrigger>
+                    <PopoverContent className="w-48 glass border-primary/20">
+                      <div className="space-y-2">
+                        <Link
+                          to="/products/suvira"
+                          className="block px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-primary/10 rounded-lg transition-all duration-300"
+                        >
+                          Suvira
+                        </Link>
+                        <Link
+                          to="/products/pulse"
+                          className="block px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-primary/10 rounded-lg transition-all duration-300"
+                        >
+                          Pulse
+                        </Link>
+                      </div>
+                    </PopoverContent>
+                  </Popover>
+                );
+              }
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="relative group"
+                >
+                  <span className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-300">
+                    {link.name}
+                  </span>
+                  {location.pathname === link.path && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
             <Link
               to="/contact"
               className="relative px-6 py-2 bg-primary text-primary-foreground rounded-full font-medium overflow-hidden group"
@@ -93,20 +135,45 @@ const Navigation = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden mt-4 pb-4 space-y-4"
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`block text-sm font-medium transition-colors duration-300 ${
-                  location.pathname === link.path
-                    ? "text-primary"
-                    : "text-foreground/80 hover:text-primary"
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              if (link.name === "Products") {
+                return (
+                  <div key={link.path} className="space-y-2">
+                    <div className="text-sm font-medium text-foreground/60 px-2">
+                      {link.name}
+                    </div>
+                    <Link
+                      to="/products/suvira"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block pl-6 text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-300"
+                    >
+                      Suvira
+                    </Link>
+                    <Link
+                      to="/products/pulse"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block pl-6 text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-300"
+                    >
+                      Pulse
+                    </Link>
+                  </div>
+                );
+              }
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block text-sm font-medium transition-colors duration-300 ${
+                    location.pathname === link.path
+                      ? "text-primary"
+                      : "text-foreground/80 hover:text-primary"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
             <Link
               to="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
