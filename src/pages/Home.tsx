@@ -50,10 +50,6 @@ const Home = () => {
               <span className="gradient-text">AI Innovation</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-              Bridge the gap between AI potential and enterprise reality with our
-              productized platforms, repeatable delivery, and measurable outcomes
-            </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/products">
@@ -148,10 +144,6 @@ const Home = () => {
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
               Ready to Transform Your Enterprise?
             </h2>
-            <p className="text-xl text-muted-foreground mb-10">
-              Join leading enterprises leveraging our AI Innovation Factory for
-              measurable business outcomes
-            </p>
             <Link to="/contact">
               <motion.button
                 whileHover={{ scale: 1.05 }}
