@@ -75,12 +75,6 @@ const Hero3D = () => {
         <pointLight position={[-10, -10, -5]} intensity={0.5} color="#5dd9d0" />
         <AnimatedSphere />
         <Particles />
-        <OrbitControls
-          enableZoom={false}
-          enablePan={false}
-          autoRotate
-          autoRotateSpeed={0.5}
-        />
       </Canvas>
     </div>
   );

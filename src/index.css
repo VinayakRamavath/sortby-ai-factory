@@ -127,6 +127,23 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  /* Grid drift animation for glitch background */
+  @keyframes grid-drift {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 64px 64px, 64px 64px; }
+  }
+
+  /* Procedural noise dots */
+  .noise-dots {
+    background-image: radial-gradient(rgba(93, 217, 208, 0.15) 1px, transparent 1px);
+    background-size: 6px 6px;
+    animation: noise-fade 6s ease-in-out infinite alternate;
+  }
+
+  @keyframes noise-fade {
+    0% { opacity: 0.15; transform: translate3d(0,0,0) }
+    100% { opacity: 0.3; transform: translate3d(2px,-2px,0) }
+  }
   /* Glass effect */
   .glass {
     background: var(--glass-bg);
@@ -199,5 +216,135 @@ All colors MUST be HSL.
     background: var(--gradient-primary);
     background-size: 200% 200%;
     animation: gradient-shift 4s ease infinite;
+  }
+
+  /* Horizontal scroll animation for application logos */
+  @keyframes scroll-horizontal {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-20px); }
+    100% { transform: translateX(0); }
+  }
+
+  .animate-scroll-horizontal {
+    animation: scroll-horizontal 4s ease-in-out infinite;
+  }
+
+  /* Glitch Sans Font Style */
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=VT323&display=swap');
+
+  .glitch-sans {
+    font-family: 'Space Mono', 'VT323', monospace;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    color: #ffffff;
+    text-shadow: 
+      2px 0 #00ffff,
+      -2px 0 #ff00ff,
+      0 2px #00ff00,
+      0 -2px #ffff00,
+      1px 1px #ff0000,
+      -1px -1px #0000ff;
+    animation: glitch-text 2s infinite;
+  }
+
+  @keyframes glitch-text {
+    0%, 90%, 100% {
+      transform: translate(0);
+      filter: hue-rotate(0deg);
+    }
+    10% {
+      transform: translate(-2px, 2px);
+      filter: hue-rotate(90deg);
+    }
+    20% {
+      transform: translate(2px, -2px);
+      filter: hue-rotate(180deg);
+    }
+    30% {
+      transform: translate(-2px, -2px);
+      filter: hue-rotate(270deg);
+    }
+    40% {
+      transform: translate(2px, 2px);
+      filter: hue-rotate(360deg);
+    }
+    50% {
+      transform: translate(-1px, 1px);
+      filter: hue-rotate(45deg);
+    }
+    60% {
+      transform: translate(1px, -1px);
+      filter: hue-rotate(135deg);
+    }
+    70% {
+      transform: translate(-1px, -1px);
+      filter: hue-rotate(225deg);
+    }
+    80% {
+      transform: translate(1px, 1px);
+      filter: hue-rotate(315deg);
+    }
+  }
+
+  .glitch-sans::before,
+  .glitch-sans::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+  }
+
+  .glitch-sans::before {
+    animation: glitch-before 2s infinite;
+    color: #ff00ff;
+    z-index: -1;
+  }
+
+  .glitch-sans::after {
+    animation: glitch-after 2s infinite;
+    color: #00ffff;
+    z-index: -2;
+  }
+
+  @keyframes glitch-before {
+    0%, 90%, 100% {
+      transform: translate(0);
+    }
+    10% {
+      transform: translate(2px, -2px);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+    }
+    30% {
+      transform: translate(2px, 2px);
+    }
+    40% {
+      transform: translate(-2px, -2px);
+    }
+  }
+
+  @keyframes glitch-after {
+    0%, 90%, 100% {
+      transform: translate(0);
+    }
+    10% {
+      transform: translate(-2px, 2px);
+    }
+    20% {
+      transform: translate(2px, -2px);
+    }
+    30% {
+      transform: translate(-2px, -2px);
+    }
+    40% {
+      transform: translate(2px, 2px);
+    }
   }
 }

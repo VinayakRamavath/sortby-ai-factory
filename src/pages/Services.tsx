@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Database, Brain, LineChart, Lightbulb, Users, Zap, Target, Rocket, CheckCircle, TrendingUp, Shield, Clock } from "lucide-react";
-import podEvolution from "@/assets/pod-evolution.png";
+import podEvolution from "@/assets/pod-evolution-new.png";
 
 const Services = () => {
   const coreServices = [
@@ -308,25 +308,131 @@ const Services = () => {
 
           {/* Pod Evolution Diagram */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="glass p-8 md:p-12 rounded-3xl max-w-6xl mx-auto mb-20"
+            transition={{ duration: 0.8 }}
+            className="max-w-6xl mx-auto mb-20"
           >
-            <h3 className="font-display text-2xl md:text-3xl font-bold text-center mb-8">
+            <motion.h3 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="font-display text-2xl md:text-3xl font-bold text-center mb-8"
+            >
               Pod Evolution: <span className="gradient-text">Human + AI Collaboration</span>
-            </h3>
-            <div className="relative">
-              <img 
+            </motion.h3>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, rotateX: -10 }}
+              whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.4, type: "spring", stiffness: 100 }}
+              whileHover={{ 
+                scale: 1.02,
+                rotateX: 2,
+                boxShadow: "0 25px 50px -12px rgba(93, 217, 208, 0.3)"
+              }}
+              className="relative overflow-hidden rounded-2xl"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <motion.img 
                 src={podEvolution} 
                 alt="Pod Evolution - Current vs Futuristic Design showing transformation from 8 human team members to 4 humans + 4 AI agents"
-                className="w-full rounded-xl"
+                className="w-full"
+                whileInView={{ scale: [1, 1.01, 1] }}
+                viewport={{ once: true }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               />
-            </div>
-            <p className="text-center text-muted-foreground mt-6 text-lg">
+              
+              {/* Floating Evolution Indicators */}
+              <motion.div
+                className="absolute inset-0 pointer-events-none"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8, duration: 1 }}
+              >
+                {/* Human to AI transformation arrows */}
+                <motion.div
+                  className="absolute top-1/4 left-1/4 w-8 h-8 bg-primary/20 backdrop-blur-sm rounded-full flex items-center justify-center"
+                  animate={{
+                    y: [0, -10, 0],
+                    scale: [1, 1.1, 1],
+                    opacity: [0.7, 1, 0.7]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <span className="text-primary text-sm font-bold">→</span>
+                </motion.div>
+                
+                <motion.div
+                  className="absolute top-1/3 right-1/3 w-6 h-6 bg-primary/20 backdrop-blur-sm rounded-full flex items-center justify-center"
+                  animate={{
+                    y: [0, -8, 0],
+                    scale: [1, 1.2, 1],
+                    opacity: [0.6, 1, 0.6]
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5
+                  }}
+                >
+                  <span className="text-primary text-xs font-bold">AI</span>
+                </motion.div>
+                
+                <motion.div
+                  className="absolute bottom-1/3 left-1/3 w-6 h-6 bg-primary/20 backdrop-blur-sm rounded-full flex items-center justify-center"
+                  animate={{
+                    y: [0, -6, 0],
+                    scale: [1, 1.15, 1],
+                    opacity: [0.5, 1, 0.5]
+                  }}
+                  transition={{
+                    duration: 2.8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1
+                  }}
+                >
+                  <span className="text-primary text-xs font-bold">+</span>
+                </motion.div>
+              </motion.div>
+
+              {/* Pulsing Evolution Glow */}
+              <motion.div
+                className="absolute inset-0 pointer-events-none"
+                animate={{
+                  background: [
+                    "radial-gradient(circle at 30% 40%, rgba(93, 217, 208, 0.1) 0%, transparent 50%)",
+                    "radial-gradient(circle at 70% 60%, rgba(93, 217, 208, 0.1) 0%, transparent 50%)",
+                    "radial-gradient(circle at 30% 40%, rgba(93, 217, 208, 0.1) 0%, transparent 50%)"
+                  ]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </motion.div>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="text-center text-muted-foreground mt-6 text-lg"
+            >
               Our AI-augmented pods combine human expertise with AI agents for accelerated delivery
-            </p>
+            </motion.p>
           </motion.div>
 
           {/* Transparent Pricing */}

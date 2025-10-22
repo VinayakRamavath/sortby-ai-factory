@@ -52,13 +52,10 @@ const Products = () => {
             {/* Suvira Details */}
             <div className="p-8 md:p-12">
               <h3 className="font-display text-3xl md:text-4xl font-bold mb-6">
-                AI-Powered Innovation at Scale
+                The AI-Powered Business Analytics Across All Your Company's Data
               </h3>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Suvira transforms how enterprises build, deploy, and scale AI solutions.
-                Our platform combines data modernization, domain expertise, and AI-native
-                workflows to deliver measurable outcomes in sales, retention, and operational
-                efficiency. Experience 25-40% time savings with predictable ROI.
+                Seamlessly integrate with your data systems to deliver real-time analytics, surface critical insights, and support high-impact decision-making accelerating performance across operations, strategy, and growth.
               </p>
 
               <div className="grid md:grid-cols-3 gap-6 mb-8">
@@ -147,8 +144,7 @@ const Products = () => {
               </div>
 
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-                The next evolution in AI-powered enterprise transformation.
-                Stay tuned for groundbreaking innovation.
+                Feel the Market Before You Move. AI-powered synthetic consumers that test your strategies in minutes, not months. Generate evidence-based insights that guide campaign design and go-to-market strategies
               </p>
 
               <Link to="/contact">
