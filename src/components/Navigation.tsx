@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
-import logo from "@/assets/sortby-logo.jpeg";
+import logo from "../assets/sortby-logo.jpeg";
 import {
   Popover,
   PopoverContent,

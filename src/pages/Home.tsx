@@ -5,6 +5,39 @@ import Hero3D from "@/components/Hero3D";
 import HeroVideo from "@/components/HeroVideo";
 import GlitchBackground from "@/components/GlitchBackground";
 import GlitchText from "@/components/GlitchText";
+
+// Import all assets
+import snowflake from "../assets/Snowflake.png";
+import googleBigQuery from "../assets/google-big-query-logo.jpg";
+import amazonRedshift from "../assets/amazon_redshift.png";
+import postgresql from "../assets/postgresql.png";
+import mysql from "../assets/mysql.png";
+import microsoftSqlServer from "../assets/microsoft_sql_server.png";
+import microsoftAzure from "../assets/Microsoft_Azure.png";
+import mongodb from "../assets/MongoDB.png";
+import ibmdb2 from "../assets/ibmdb2.png";
+import teradata from "../assets/Teradata.png";
+import sqlite from "../assets/sqlite.png";
+import apacheSpark from "../assets/apache-spark.png";
+import amazonAthena from "../assets/amazon_athena.png";
+import oracleDatabase from "../assets/oracle_database.png";
+import druid from "../assets/druid.png";
+import presto from "../assets/presto.png";
+import linkedin from "../assets/Linkedin.png";
+import servicenow from "../assets/servicenow.png";
+import salesforce from "../assets/salesforce.png";
+import shopify from "../assets/shopify.png";
+import amplitude from "../assets/amplitude.png";
+import googleAds from "../assets/Google-ads.png";
+import googleAnalytics from "../assets/Google-Analytics-Logo.png";
+import firebase from "../assets/firebase.png";
+import workday from "../assets/workday.png";
+import magento from "../assets/magento.png";
+import woocommerce from "../assets/woocommerce.png";
+import meta from "../assets/meta.png";
+import sqlEditor from "../assets/sql_editor.png";
+import dashboards from "../assets/dashboards.png";
+import automation from "../assets/automation.png";
  
 
 const Home = () => {
@@ -290,7 +323,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/Snowflake.png" 
+                src={snowflake} 
                 alt="Snowflake" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -317,7 +350,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/google-big-query-logo.jpg" 
+                src={googleBigQuery} 
                 alt="Google BigQuery" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -344,7 +377,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/amazon_redshift.png" 
+                src={amazonRedshift} 
                 alt="Amazon Redshift" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -371,7 +404,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/postgresql.png" 
+                src={postgresql} 
                 alt="PostgreSQL" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -398,7 +431,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/mysql.png" 
+                src={mysql} 
                 alt="MySQL" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -425,7 +458,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/microsoft_sql_server.png" 
+                src={microsoftSqlServer} 
                 alt="Microsoft SQL Server" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -452,7 +485,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/Microsoft_Azure.png" 
+                src={microsoftAzure} 
                 alt="Microsoft Azure" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -479,7 +512,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/MongoDB.png" 
+                src={mongodb} 
                 alt="MongoDB" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -506,7 +539,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/ibmdb2.png" 
+                src={ibmdb2} 
                 alt="IBM Db2" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -533,7 +566,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/Teradata.png" 
+                src={teradata} 
                 alt="Teradata" 
                 className="w-24 h-24 md:w-28 md:h-28 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -561,7 +594,7 @@ const Home = () => {
             >
               <div className="relative p-1 rounded-xl transition-all duration-300 group-hover:bg-white group-hover:shadow-lg">
                 <img 
-                  src="/src/assets/sqlite.png" 
+                  src={sqlite} 
                   alt="SQLite" 
                   className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
                 />
@@ -590,7 +623,7 @@ const Home = () => {
             >
               <div className="relative p-1 rounded-xl transition-all duration-300 group-hover:bg-white group-hover:shadow-lg">
                 <img 
-                  src="/src/assets/apache-spark.png" 
+                  src={apacheSpark} 
                   alt="Spark SQL" 
                   className="w-24 h-24 md:w-28 md:h-28 grayscale hover:grayscale-0 transition-all duration-300"
                 />
@@ -618,7 +651,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/amazon_athena.png" 
+                src={amazonAthena} 
                 alt="Amazon Athena" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -645,7 +678,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/oracle_database.png" 
+                src={oracleDatabase} 
                 alt="Oracle Database" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -672,7 +705,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/druid.png" 
+                src={druid} 
                 alt="Druid" 
                 className="w-12 h-12 md:w-16 md:h-16 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -700,7 +733,7 @@ const Home = () => {
             >
               <div className="relative p-1 rounded-xl transition-all duration-300 group-hover:bg-white group-hover:shadow-lg">
                 <img 
-                  src="/src/assets/presto.png" 
+                  src={presto} 
                   alt="Presto" 
                   className="w-20 h-20 md:w-24 md:h-24 grayscale hover:grayscale-0 transition-all duration-300"
                 />
@@ -759,7 +792,7 @@ const Home = () => {
             >
               <div className="relative p-1 rounded-xl transition-all duration-300 group-hover:bg-white group-hover:shadow-lg">
                 <img 
-                  src="/src/assets/Linkedin.png" 
+                  src={linkedin} 
                   alt="LinkedIn" 
                   className="w-20 h-20 md:w-24 md:h-24 grayscale hover:grayscale-0 transition-all duration-300"
                 />
@@ -788,7 +821,7 @@ const Home = () => {
             >
               <div className="relative p-1 rounded-xl transition-all duration-300 group-hover:bg-white group-hover:shadow-lg">
                 <img 
-                  src="/src/assets/servicenow.png" 
+                  src={servicenow} 
                   alt="ServiceNow" 
                   className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
                 />
@@ -816,7 +849,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/salesforce.png" 
+                src={salesforce} 
                 alt="Salesforce" 
                 className="w-20 h-20 md:w-24 md:h-24 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -843,7 +876,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/shopify.png" 
+                src={shopify} 
                 alt="Shopify" 
                 className="w-20 h-20 md:w-24 md:h-24 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -870,7 +903,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/amplitude.png" 
+                src={amplitude} 
                 alt="Amplitude" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -897,7 +930,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/Google-ads.png" 
+                src={googleAds} 
                 alt="Google Ads" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -924,7 +957,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/Google-Analytics-Logo.png" 
+                src={googleAnalytics} 
                 alt="Google Analytics" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -951,7 +984,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/firebase.png" 
+                src={firebase} 
                 alt="Firebase" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -979,7 +1012,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/workday.png" 
+                src={workday} 
                 alt="Workday" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -1006,7 +1039,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/magento.png" 
+                src={magento} 
                 alt="Magento" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -1033,7 +1066,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/woocommerce.png" 
+                src={woocommerce} 
                 alt="WooCommerce" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -1060,7 +1093,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/src/assets/meta.png" 
+                src={meta} 
                 alt="Meta" 
                 className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
               />
@@ -1215,7 +1248,7 @@ const Home = () => {
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <motion.img 
-                  src="/src/assets/sql_editor.png" 
+                  src={sqlEditor} 
                   alt="SQL Editor Interface" 
                   className="w-full h-auto"
                   whileInView={{ scale: [1, 1.01, 1] }}
@@ -1338,7 +1371,7 @@ const Home = () => {
                 className="relative"
               >
                 <img 
-                  src="/src/assets/dashboards.png" 
+                  src={dashboards} 
                   alt="Dashboard Interface" 
                   className="w-full h-auto"
                 />
@@ -1491,7 +1524,7 @@ const Home = () => {
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               >
                 <img 
-                  src="/src/assets/automation.png" 
+                  src={automation} 
                   alt="Automation Interface" 
                   className="w-full h-auto"
                 />

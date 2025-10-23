@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Database, Brain, LineChart, Lightbulb, Users, Zap, Target, Rocket, CheckCircle, TrendingUp, Shield, Clock } from "lucide-react";
-import podEvolution from "@/assets/pod-evolution-new.png";
+import podEvolution from "../assets/pod-evolution-new.png";
 
 const Services = () => {
   const coreServices = [
