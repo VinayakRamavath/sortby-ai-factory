@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Mail, Send, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -11,14 +12,47 @@ const Contact = () => {
     company: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    setFormData({ name: "", email: "", company: "", message: "" });
+    setIsSubmitting(true);
+    
+    // EmailJS configuration
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_sortby';
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_contact';
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key';
+    
+    try {
+      // Send email using EmailJS
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          company: formData.company,
+          message: formData.message,
+          to_email: 'sortbysalesteam@gmail.com',
+        },
+        publicKey
+      );
+      
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you within 24 hours.",
+      });
+      setFormData({ name: "", email: "", company: "", message: "" });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or email us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -138,12 +172,22 @@ const Contact = () => {
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold inline-flex items-center justify-center gap-2 glow"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  className="w-full px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold inline-flex items-center justify-center gap-2 glow disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
-                  <Send className="w-4 h-4" />
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="w-4 h-4" />
+                    </>
+                  )}
                 </motion.button>
               </form>
             </div>

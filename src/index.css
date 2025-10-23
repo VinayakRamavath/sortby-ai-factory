@@ -229,6 +229,41 @@ All colors MUST be HSL.
     animation: scroll-horizontal 4s ease-in-out infinite;
   }
 
+  /* Fix cursor glitch on logo hover */
+  .animate-scroll-horizontal .motion-div {
+    will-change: transform;
+    transform-style: preserve-3d;
+  }
+
+  /* Smooth hover transitions to prevent glitches */
+  .animate-scroll-horizontal img {
+    transition: all 0.2s ease-out;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* Prevent layout shifts during hover */
+  .animate-scroll-horizontal .motion-div {
+    transform-origin: center center;
+  }
+
+  /* Additional smoothness for cursor movement */
+  .animate-scroll-horizontal * {
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  /* Smooth text transitions to prevent glitches */
+  #db-title, #db-description, #app-title, #app-description {
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+  }
+
+  /* Prevent text flickering during transitions */
+  .animate-scroll-horizontal .motion-div {
+    contain: layout style paint;
+  }
+
   /* Glitch Sans Font Style */
   @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=VT323&display=swap');
 

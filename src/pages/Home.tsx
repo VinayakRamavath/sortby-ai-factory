@@ -286,10 +286,10 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-white text-2xl md:text-3xl font-bold mb-4 font-sans" id="db-title">
+            <h2 className="text-white text-2xl md:text-3xl font-bold mb-4 font-sans transition-all duration-300 ease-in-out" id="db-title">
               Connect any database or warehouse
             </h2>
-            <p className="text-white/80 text-lg max-w-3xl mx-auto" id="db-description">
+            <p className="text-white/80 text-lg max-w-3xl mx-auto transition-all duration-300 ease-in-out" id="db-description">
               Connect SUVIRA directly to your database or warehouse to build dashboards and query your data in minutes.
             </p>
           </motion.div>
@@ -307,7 +307,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.5 }}
+              transition={{ 
+                delay: 0.3, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -334,7 +340,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.5 }}
+              transition={{ 
+                delay: 0.4, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -361,7 +373,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.5 }}
+              transition={{ 
+                delay: 0.5, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -388,7 +406,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.5 }}
+              transition={{ 
+                delay: 0.6, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -415,7 +439,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.7, duration: 0.5 }}
+              transition={{ 
+                delay: 0.7, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -442,7 +472,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.9, duration: 0.5 }}
+              transition={{ 
+                delay: 0.9, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -469,7 +505,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.0, duration: 0.5 }}
+              transition={{ 
+                delay: 1.0, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -496,7 +538,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.1, duration: 0.5 }}
+              transition={{ 
+                delay: 1.1, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -523,7 +571,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.2, duration: 0.5 }}
+              transition={{ 
+                delay: 1.2, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -550,7 +604,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.3, duration: 0.5 }}
+              transition={{ 
+                delay: 1.3, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -577,7 +637,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.4, duration: 0.5 }}
+              transition={{ 
+                delay: 1.4, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -606,7 +672,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.5, duration: 0.5 }}
+              transition={{ 
+                delay: 1.5, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -635,7 +707,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.6, duration: 0.5 }}
+              transition={{ 
+                delay: 1.6, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -662,7 +740,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.7, duration: 0.5 }}
+              transition={{ 
+                delay: 1.7, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -689,7 +773,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.8, duration: 0.5 }}
+              transition={{ 
+                delay: 1.8, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -716,7 +806,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.9, duration: 0.5 }}
+              transition={{ 
+                delay: 1.9, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -753,10 +849,10 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-white text-2xl md:text-3xl font-bold mb-4 font-sans" id="app-title">
+            <h2 className="text-white text-2xl md:text-3xl font-bold mb-4 font-sans transition-all duration-300 ease-in-out" id="app-title">
               Connect your Applications
             </h2>
-            <p className="text-white/80 text-lg max-w-3xl mx-auto" id="app-description">
+            <p className="text-white/80 text-lg max-w-3xl mx-auto transition-all duration-300 ease-in-out" id="app-description">
               Seamlessly integrate SUVIRA with your favorite business applications and tools for unified data workflows.
             </p>
           </motion.div>
@@ -775,7 +871,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.5 }}
+              transition={{ 
+                delay: 0.4, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -804,7 +906,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.5 }}
+              transition={{ 
+                delay: 0.5, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -833,7 +941,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.5 }}
+              transition={{ 
+                delay: 0.6, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -860,7 +974,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.7, duration: 0.5 }}
+              transition={{ 
+                delay: 0.7, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -887,7 +1007,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.7, duration: 0.5 }}
+              transition={{ 
+                delay: 0.7, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -914,7 +1040,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.8, duration: 0.5 }}
+              transition={{ 
+                delay: 0.8, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -941,7 +1073,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.9, duration: 0.5 }}
+              transition={{ 
+                delay: 0.9, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -968,7 +1106,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.0, duration: 0.5 }}
+              transition={{ 
+                delay: 1.0, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -996,7 +1140,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.3, duration: 0.5 }}
+              transition={{ 
+                delay: 1.3, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -1023,7 +1173,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.5, duration: 0.5 }}
+              transition={{ 
+                delay: 1.5, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -1050,7 +1206,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.6, duration: 0.5 }}
+              transition={{ 
+                delay: 1.6, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -1077,7 +1239,13 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 1.7, duration: 0.5 }}
+              transition={{ 
+                delay: 1.7, 
+                duration: 0.5,
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20
+              }}
               whileHover={{ 
                 scale: 1.1,
                 filter: "brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))"
@@ -1662,12 +1830,12 @@ const Home = () => {
       </section>
       
     {/* Hero Section (Glitch Inspired) moved to bottom */}
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16">
         <GlitchBackground />
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center max-w-6xl mx-auto">
             <div className="mb-6">
-              <GlitchText text="SORTBY" playOnce />
+              <GlitchText text="SORTBY" playOnce={false} />
             </div>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
               AI Service as Software — modern systems, measurable outcomes

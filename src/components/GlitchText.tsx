@@ -20,7 +20,7 @@ const GlitchText = ({ text, playOnce = true }: GlitchTextProps) => {
 
       {/* base letters */}
       <motion.div
-        className="relative flex gap-3 md:gap-4"
+        className="relative flex gap-1 sm:gap-2 md:gap-3 lg:gap-4"
         initial="hidden"
         whileInView="show"
         viewport={{ once: playOnce, amount: 0.7 }}
@@ -29,7 +29,7 @@ const GlitchText = ({ text, playOnce = true }: GlitchTextProps) => {
         {letters.map((char, idx) => (
           <motion.span
             key={idx}
-            className="relative select-none font-display text-9xl md:text-[14rem] font-extrabold tracking-tight"
+            className="relative select-none font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] 2xl:text-[14rem] font-extrabold tracking-tight"
             variants={{
               hidden: { opacity: 0, filter: "blur(6px)", y: 24 },
               show: { opacity: 1, filter: "blur(0px)", y: 0 },
