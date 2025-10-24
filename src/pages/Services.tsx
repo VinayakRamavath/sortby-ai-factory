@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Database, Brain, LineChart, Lightbulb, Users, Zap, Target, Rocket, CheckCircle, TrendingUp, Shield, Clock } from "lucide-react";
-import podEvolution from "../assets/pod-evolution-new.png";
+import podEvolution from "../assets/pod-evolution-new.gif";
 
 const Services = () => {
   const coreServices = [
@@ -126,12 +126,6 @@ const Services = () => {
     }
   ];
 
-  const pricingFeatures = [
-    "Fixed-price sprints with clear deliverables",
-    "Open-source first approach—no vendor lock-in",
-    "All code and documentation becomes your IP",
-    "Month-to-month contracts after initial engagement"
-  ];
 
   const accelerators = [
     "50+ pre-built feature engineering templates",
@@ -147,8 +141,8 @@ const Services = () => {
 
   return (
     <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="py-32 relative">
+      {/* Text Section */}
+      <section className="pt-16 pb-8 relative">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -156,13 +150,60 @@ const Services = () => {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="font-display text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6">
               Core Service <span className="gradient-text">Offerings</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground">
               Transform your AI ambitions into operational reality with services designed for measurable business impact
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Pod Evolution Content Box */}
+      <section className="py-16 relative">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="glass p-6 md:p-12 rounded-3xl backdrop-blur-sm border border-primary/20 max-w-6xl mx-auto text-center"
+          >
+            <motion.h2 
+              className="font-display text-xl sm:text-2xl md:text-3xl font-bold mb-4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              Pod Evolution: <span className="gradient-text">Human + AI Collaboration</span>
+            </motion.h2>
+            
+            <motion.p 
+              className="text-base sm:text-lg md:text-xl text-muted-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+            >
+              Our AI-augmented pods combine human expertise with AI agents for accelerated delivery
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Image Hero Section */}
+      <section className="relative flex items-center justify-center py-8 md:py-12 px-4 md:px-6">
+        {/* Image Container */}
+        <div className="relative w-full max-w-6xl mx-auto">
+          <div className="aspect-[2644/1264] w-full">
+            <img 
+              src={podEvolution}
+              alt="Pod Evolution - Human + AI Collaboration"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          
+          {/* Simple Border */}
+          <div className="absolute inset-0 border-2 border-primary/30 rounded-xl"></div>
         </div>
       </section>
 
@@ -306,155 +347,6 @@ const Services = () => {
             ))}
           </div>
 
-          {/* Pod Evolution Diagram */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-6xl mx-auto mb-20"
-          >
-            <motion.h3 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-display text-2xl md:text-3xl font-bold text-center mb-8"
-            >
-              Pod Evolution: <span className="gradient-text">Human + AI Collaboration</span>
-            </motion.h3>
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotateX: -10 }}
-              whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.4, type: "spring", stiffness: 100 }}
-              whileHover={{ 
-                scale: 1.02,
-                rotateX: 2,
-                boxShadow: "0 25px 50px -12px rgba(93, 217, 208, 0.3)"
-              }}
-              className="relative overflow-hidden rounded-2xl"
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              <motion.img 
-                src={podEvolution} 
-                alt="Pod Evolution - Current vs Futuristic Design showing transformation from 8 human team members to 4 humans + 4 AI agents"
-                className="w-full"
-                whileInView={{ scale: [1, 1.01, 1] }}
-                viewport={{ once: true }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              />
-              
-              {/* Floating Evolution Indicators */}
-              <motion.div
-                className="absolute inset-0 pointer-events-none"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.8, duration: 1 }}
-              >
-                {/* Human to AI transformation arrows */}
-                <motion.div
-                  className="absolute top-1/4 left-1/4 w-8 h-8 bg-primary/20 backdrop-blur-sm rounded-full flex items-center justify-center"
-                  animate={{
-                    y: [0, -10, 0],
-                    scale: [1, 1.1, 1],
-                    opacity: [0.7, 1, 0.7]
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
-                  <span className="text-primary text-sm font-bold">→</span>
-                </motion.div>
-                
-                <motion.div
-                  className="absolute top-1/3 right-1/3 w-6 h-6 bg-primary/20 backdrop-blur-sm rounded-full flex items-center justify-center"
-                  animate={{
-                    y: [0, -8, 0],
-                    scale: [1, 1.2, 1],
-                    opacity: [0.6, 1, 0.6]
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5
-                  }}
-                >
-                  <span className="text-primary text-xs font-bold">AI</span>
-                </motion.div>
-                
-                <motion.div
-                  className="absolute bottom-1/3 left-1/3 w-6 h-6 bg-primary/20 backdrop-blur-sm rounded-full flex items-center justify-center"
-                  animate={{
-                    y: [0, -6, 0],
-                    scale: [1, 1.15, 1],
-                    opacity: [0.5, 1, 0.5]
-                  }}
-                  transition={{
-                    duration: 2.8,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1
-                  }}
-                >
-                  <span className="text-primary text-xs font-bold">+</span>
-                </motion.div>
-              </motion.div>
-
-              {/* Pulsing Evolution Glow */}
-              <motion.div
-                className="absolute inset-0 pointer-events-none"
-                animate={{
-                  background: [
-                    "radial-gradient(circle at 30% 40%, rgba(93, 217, 208, 0.1) 0%, transparent 50%)",
-                    "radial-gradient(circle at 70% 60%, rgba(93, 217, 208, 0.1) 0%, transparent 50%)",
-                    "radial-gradient(circle at 30% 40%, rgba(93, 217, 208, 0.1) 0%, transparent 50%)"
-                  ]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-            </motion.div>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-center text-muted-foreground mt-6 text-lg"
-            >
-              Our AI-augmented pods combine human expertise with AI agents for accelerated delivery
-            </motion.p>
-          </motion.div>
-
-          {/* Transparent Pricing */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="glass p-8 md:p-12 rounded-3xl max-w-4xl mx-auto"
-          >
-            <h3 className="font-display text-2xl md:text-3xl font-bold text-center mb-8">
-              Transparent Pricing, <span className="gradient-text">No Surprises</span>
-            </h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              {pricingFeatures.map((feature, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-muted-foreground">{feature}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
 

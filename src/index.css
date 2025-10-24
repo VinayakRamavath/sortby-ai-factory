@@ -285,6 +285,23 @@ All colors MUST be HSL.
     animation: glitch-text 2s infinite;
   }
 
+  .glitch-sans-static {
+    font-family: 'Space Mono', 'VT323', monospace;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    color: #ffffff;
+    text-shadow: 
+      2px 0 #00ffff,
+      -2px 0 #ff00ff,
+      0 2px #00ff00,
+      0 -2px #ffff00,
+      1px 1px #ff0000,
+      -1px -1px #0000ff;
+  }
+
   @keyframes glitch-text {
     0%, 90%, 100% {
       transform: translate(0);

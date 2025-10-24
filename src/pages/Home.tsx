@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Zap, Target, Rocket } from "lucide-react";
+import { ArrowRight, Zap, Target, Rocket, ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import Hero3D from "@/components/Hero3D";
 import HeroVideo from "@/components/HeroVideo";
 import GlitchBackground from "@/components/GlitchBackground";
@@ -38,9 +39,12 @@ import meta from "../assets/meta.png";
 import sqlEditor from "../assets/sql_editor.png";
 import dashboards from "../assets/dashboards.png";
 import automation from "../assets/automation.png";
+import platform from "../assets/platform.png";
  
 
 const Home = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   const features = [
     {
       icon: Zap,
@@ -61,105 +65,361 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <HeroVideo />
+      {/* Hero Section (Glitch Inspired) */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16">
+        <GlitchBackground />
         <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-5xl mx-auto"
-          >
+          <div className="text-center max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-block mb-6 px-6 py-2 glass rounded-full"
+              className="inline-block mb-6"
             >
-              <span className="text-sm font-medium gradient-text">
+              <motion.button
+                onClick={() => {
+                  setIsDropdownOpen(!isDropdownOpen);
+                  if (!isDropdownOpen) {
+                    // Scroll to dropdown content after a short delay to allow animation to start
+                    setTimeout(() => {
+                      const dropdownElement = document.getElementById('ai-service-dropdown');
+                      if (dropdownElement) {
+                        dropdownElement.scrollIntoView({ 
+                          behavior: 'smooth', 
+                          block: 'start',
+                          inline: 'nearest'
+                        });
+                      }
+                    }, 100);
+                  }
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-2 glass rounded-full border border-primary/20 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 cursor-pointer group"
+              >
+                <span className="text-sm font-medium gradient-text group-hover:text-primary transition-colors">
                 AI Service as Software
               </span>
+                <motion.div
+                  animate={{ rotate: isDropdownOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown className="w-4 h-4 text-primary" />
             </motion.div>
-
-            <h1 className="font-display text-6xl md:text-8xl font-bold mb-6">
-              Transform with{" "}
-              <span className="gradient-text">AI Innovation</span>
-            </h1>
-
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/products">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold text-lg flex items-center gap-2 glow"
-                >
-                  Explore Products
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-              </Link>
-              <Link to="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 glass rounded-full font-semibold text-lg"
-                >
-                  Get Started
-                </motion.button>
-              </Link>
+              </motion.button>
+            </motion.div>
+            <div className="mb-6">
+              <GlitchText text="SORTBY" playOnce={false} />
             </div>
-          </motion.div>
-        </div>
-
-      </section>
-      
-
-      
-
-      {/* Value Ladder Section */}
-      <section className="py-20 relative">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-20"
-          >
-            <h2 className="font-display text-4xl md:text-6xl font-bold mb-6">
-              Three-Stage <span className="gradient-text">Value Ladder</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              From foundation to transformation, we accelerate your AI journey
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2, duration: 0.6 }}
-                whileHover={{ y: -8 }}
-                className="glass p-8 rounded-2xl card-3d group"
-              >
-                <div className="mb-6 inline-flex p-4 bg-primary/10 rounded-2xl glow">
-                  <feature.icon className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="font-display text-2xl font-bold mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
+
+      {/* AI Service as Software Dropdown Content */}
+      <motion.div
+        id="ai-service-dropdown"
+        initial={false}
+        animate={{ 
+          height: isDropdownOpen ? "auto" : 0,
+          opacity: isDropdownOpen ? 1 : 0
+        }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="overflow-hidden bg-gradient-to-b from-background to-muted/20 border-t border-primary/10 relative"
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
+            backgroundSize: '20px 20px'
+          }}></div>
+        </div>
+        
+        <div className="container mx-auto px-6 py-24 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            {/* Main Heading */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isDropdownOpen ? 1 : 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-center mb-20 relative"
+            >
+              <h1 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-8 leading-tight">
+                <span className="glitch-sans-static">AI SERVICE AS SOFTWARE</span>
+            </h1>
+              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                <span className="glitch-sans-static">WE DON'T DELIVER SOFTWARE, WE DELIVER OUTCOMES</span>
+              </p>
+              
+              {/* Decorative Line */}
+              <div className="w-24 h-1 bg-gradient-to-r from-primary to-transparent mx-auto mt-8 rounded-full"></div>
+            </motion.div>
+
+            {/* The Paradigm Shift */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isDropdownOpen ? 1 : 0, y: isDropdownOpen ? 0 : 20 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="mb-16"
+            >
+              <h3 className="font-display text-3xl font-bold mb-8 text-center">
+                The Paradigm <span className="gradient-text">Shift</span>
+              </h3>
+              <p className="text-lg text-muted-foreground mb-8 text-center max-w-4xl mx-auto">
+                For decades, software ate the world by digitizing manual processes. Now, AI is eating software by automating the work itself.
+              </p>
+              
+              {/* Old vs New Model */}
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Old Model */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: isDropdownOpen ? 1 : 0, x: isDropdownOpen ? 0 : -20 }}
+                  transition={{ delay: 0.6, duration: 0.6 }}
+                  className="bg-primary/10 border border-primary/20 rounded-lg p-6 backdrop-blur-sm"
+                >
+                  <h4 className="text-xl font-bold text-primary mb-4">The Old Model: Software-as-a-Service</h4>
+                  <p className="text-muted-foreground mb-4">You buy tools. You hire people. You train them. You hope for results.</p>
+                  <div className="bg-muted/50 rounded-lg p-4">
+                    <p className="text-sm font-mono text-muted-foreground">
+                      <strong>Example:</strong><br />
+                      Buy Salesforce → Hire SDRs → Train them on the platform → Cross your fingers they hit quota
+                    </p>
+                  </div>
+                  <p className="text-sm text-primary/80 mt-4">
+                    <strong>The problem:</strong> You're responsible for the outcome. The software vendor just provides access.
+                  </p>
+                </motion.div>
+
+                {/* New Model */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: isDropdownOpen ? 1 : 0, x: isDropdownOpen ? 0 : 20 }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
+                  className="bg-primary/10 border border-primary/20 rounded-lg p-6 backdrop-blur-sm"
+                >
+                  <h4 className="text-xl font-bold text-primary mb-4">The New Model: Service-as-Software</h4>
+                  <p className="text-muted-foreground mb-4">You buy outcomes. AI agents do the work. The platform guarantees results.</p>
+                  <div className="bg-muted/50 rounded-lg p-4">
+                    <p className="text-sm font-mono text-muted-foreground">
+                      <strong>Example:</strong><br />
+                      Engage AI sales agent → Qualified pipeline delivered automatically → You focus on closing
+                    </p>
+                  </div>
+                  <p className="text-sm text-primary/80 mt-4">
+                    <strong>The difference:</strong> We're responsible for the outcome. The platform delivers the service.
+                  </p>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Our Vision */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isDropdownOpen ? 1 : 0, y: isDropdownOpen ? 0 : 20 }}
+              transition={{ delay: 1.0, duration: 0.6 }}
+              className="mb-16"
+            >
+              <h3 className="font-display text-3xl font-bold mb-8 text-center">
+                Our Vision: Platform-Powered <span className="gradient-text">Service Delivery</span>
+              </h3>
+              <p className="text-lg text-muted-foreground mb-8 text-center max-w-4xl mx-auto">
+                At SortBy, we're not building AI features to bolt onto existing services. We're reimagining service delivery from the ground up with AI at the core.
+              </p>
+              
+              {/* Platform Architecture Diagram */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: isDropdownOpen ? 1 : 0, scale: isDropdownOpen ? 1 : 0.9 }}
+                transition={{ delay: 1.2, duration: 0.6 }}
+                className="text-center mb-8"
+              >
+                <img 
+                  src={platform} 
+                  alt="Platform Architecture" 
+                  className="max-w-4xl h-auto mx-auto rounded-lg shadow-2xl"
+                />
+              </motion.div>
+
+              {/* Three Layers */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: isDropdownOpen ? 1 : 0, y: isDropdownOpen ? 0 : 20 }}
+                transition={{ delay: 1.4, duration: 0.6 }}
+                className="text-center mb-12"
+              >
+                <h3 className="font-display text-3xl font-bold mb-4">
+                  AI Agents + Platform + <span className="gradient-text">Human Expertise</span>
+                </h3>
+              </motion.div>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                {/* AI Agent Services Layer */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: isDropdownOpen ? 1 : 0, y: isDropdownOpen ? 0 : 20 }}
+                  transition={{ delay: 1.6, duration: 0.6 }}
+                  className="group relative p-8 bg-gradient-to-br from-blue-500/10 to-cyan-500/5 border border-blue-500/20 rounded-2xl backdrop-blur-sm hover:border-blue-400/40 transition-all duration-300"
+                >
+                  {/* Icon */}
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  
+                  <h4 className="text-xl font-bold mb-4 text-white group-hover:text-blue-300 transition-colors">
+                    AI Agent Services Layer
+                  </h4>
+                  
+                  <p className="text-slate-300 leading-relaxed mb-6">
+                    Autonomous agents that deliver complete business functions end-to-end—from billing support to data entry to customer service. Each agent is purpose-built to own outcomes, not just execute tasks.
+                  </p>
+                  
+                  {/* Feature highlights */}
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-sm text-blue-300">
+                      <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                      <span>End-to-end business functions</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-blue-300">
+                      <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                      <span>Outcome-focused design</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-blue-300">
+                      <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                      <span>Autonomous operation</span>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* SortBy Platform Layer */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: isDropdownOpen ? 1 : 0, y: isDropdownOpen ? 0 : 20 }}
+                  transition={{ delay: 1.8, duration: 0.6 }}
+                  className="group relative p-8 bg-gradient-to-br from-purple-500/10 to-pink-500/5 border border-purple-500/20 rounded-2xl backdrop-blur-sm hover:border-purple-400/40 transition-all duration-300"
+                >
+                  {/* Icon */}
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                    </svg>
+                  </div>
+                  
+                  <h4 className="text-xl font-bold mb-4 text-white group-hover:text-purple-300 transition-colors">
+                    SortBy Platform Layer
+                  </h4>
+                  
+                  <p className="text-slate-300 leading-relaxed mb-6">
+                    The underlying infrastructure that powers everything—data engineering, AI/ML operations, and applied data science capabilities. This is where the heavy lifting happens: real-time data processing, model serving, automated MLOps, and governance frameworks.
+                  </p>
+                  
+                  {/* Feature highlights */}
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-sm text-purple-300">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
+                      <span>Real-time data processing</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-purple-300">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
+                      <span>Automated MLOps</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-purple-300">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
+                      <span>Governance frameworks</span>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Human Expertise Layer */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: isDropdownOpen ? 1 : 0, y: isDropdownOpen ? 0 : 20 }}
+                  transition={{ delay: 2.0, duration: 0.6 }}
+                  className="group relative p-8 bg-gradient-to-br from-emerald-500/10 to-teal-500/5 border border-emerald-500/20 rounded-2xl backdrop-blur-sm hover:border-emerald-400/40 transition-all duration-300"
+                >
+                  {/* Icon */}
+                  <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                    </svg>
+                  </div>
+                  
+                  <h4 className="text-xl font-bold mb-4 text-white group-hover:text-emerald-300 transition-colors">
+                    Human Expertise Layer
+                  </h4>
+                  
+                  <p className="text-slate-300 leading-relaxed mb-6">
+                    Strategic guidance, domain knowledge, and judgment that AI can't replicate. Our teams focus on business problem framing, technical architecture decisions, domain-specific model design, and stakeholder management.
+                  </p>
+                  
+                  {/* Feature highlights */}
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-sm text-emerald-300">
+                      <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+                      <span>Strategic guidance</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-emerald-300">
+                      <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+                      <span>Domain expertise</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-emerald-300">
+                      <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+                      <span>Stakeholder management</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Three-Stage Value Ladder */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isDropdownOpen ? 1 : 0, y: isDropdownOpen ? 0 : 20 }}
+              transition={{ delay: 2.2, duration: 0.6 }}
+              className="text-center mb-16 relative"
+            >
+              {/* Section Divider */}
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent mb-12"></div>
+              
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+                Three-Stage <span className="gradient-text">Value Ladder</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                From foundation to transformation, we accelerate your AI journey
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isDropdownOpen ? 1 : 0, y: isDropdownOpen ? 0 : 20 }}
+              transition={{ delay: 2.4, duration: 0.6 }}
+              className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+            >
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: isDropdownOpen ? 1 : 0, y: isDropdownOpen ? 0 : 30 }}
+                  transition={{ delay: 2.6 + (index * 0.2), duration: 0.6 }}
+                  whileHover={{ y: -8 }}
+                  className="glass p-8 rounded-2xl card-3d group"
+                >
+                  <div className="mb-6 inline-flex p-4 bg-primary/10 rounded-2xl glow">
+                    <feature.icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="font-display text-2xl font-bold mb-4">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
 
       {/* Featured Product Section */}
       <section className="py-16 relative">
@@ -229,8 +489,8 @@ const Home = () => {
 
                 {/* Main Text */}
                 <div className="relative z-10">
-                  <h2 className="font-display text-4xl md:text-6xl font-bold mb-4">
-                    <span className="glitch-sans" data-text="FEATURED PRODUCT SUVIRA">FEATURED PRODUCT SUVIRA</span>
+                  <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4">
+                    <span className="glitch-sans" data-text="FEATURED PRODUCT AGENT SUVIRA">FEATURED PRODUCT AGENT SUVIRA</span>
                   </h2>
                   
                   {/* Tech Status Indicators */}
@@ -262,6 +522,29 @@ const Home = () => {
                       <span className="text-sm font-mono text-purple-400">READY</span>
                     </motion.div>
                   </div>
+                  
+                  {/* Action Buttons */}
+                  <div className="flex justify-center items-center gap-4 mt-8">
+                    <Link to="/products/suvira">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                        className="px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-base hover:bg-primary/90 transition-all duration-300 glow"
+                >
+                        About Suvira
+                </motion.button>
+              </Link>
+                    
+                    <Link to="/products/suvira">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                        className="px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-base hover:bg-primary/90 transition-all duration-300 glow"
+                >
+                        Meet Suvira
+                </motion.button>
+              </Link>
+                  </div>
                 </div>
 
                 {/* Scanning Line Effect */}
@@ -279,17 +562,17 @@ const Home = () => {
       {/* Explore Data Sources Section */}
       <section className="py-20 bg-background relative overflow-hidden">
         <div className="container mx-auto px-6">
-          <motion.div
+        <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-white text-2xl md:text-3xl font-bold mb-4 font-sans transition-all duration-300 ease-in-out" id="db-title">
+            <h2 className="text-white text-xl sm:text-2xl md:text-3xl font-bold mb-4 font-sans transition-all duration-300 ease-in-out" id="db-title">
               Connect any database or warehouse
             </h2>
-            <p className="text-white/80 text-lg max-w-3xl mx-auto transition-all duration-300 ease-in-out" id="db-description">
+            <p className="text-white/80 text-base sm:text-lg max-w-3xl mx-auto transition-all duration-300 ease-in-out" id="db-description">
               Connect SUVIRA directly to your database or warehouse to build dashboards and query your data in minutes.
             </p>
           </motion.div>
@@ -664,8 +947,8 @@ const Home = () => {
                   alt="SQLite" 
                   className="w-16 h-16 md:w-20 md:h-20 grayscale hover:grayscale-0 transition-all duration-300"
                 />
-              </div>
-            </motion.div>
+          </div>
+        </motion.div>
 
             {/* Spark SQL */}
             <motion.div
@@ -849,10 +1132,10 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-white text-2xl md:text-3xl font-bold mb-4 font-sans transition-all duration-300 ease-in-out" id="app-title">
+            <h2 className="text-white text-xl sm:text-2xl md:text-3xl font-bold mb-4 font-sans transition-all duration-300 ease-in-out" id="app-title">
               Connect your Applications
             </h2>
-            <p className="text-white/80 text-lg max-w-3xl mx-auto transition-all duration-300 ease-in-out" id="app-description">
+            <p className="text-white/80 text-base sm:text-lg max-w-3xl mx-auto transition-all duration-300 ease-in-out" id="app-description">
               Seamlessly integrate SUVIRA with your favorite business applications and tools for unified data workflows.
             </p>
           </motion.div>
@@ -1289,10 +1572,10 @@ const Home = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <motion.div
+              <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+                viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.6 }}
               className="glass p-8 rounded-2xl text-center glow"
             >
@@ -1307,11 +1590,11 @@ const Home = () => {
               </motion.div>
               <h3 className="font-display text-xl font-bold mb-2">
                 Lower Hallucination Rate
-              </h3>
-              <p className="text-muted-foreground">
+                </h3>
+                <p className="text-muted-foreground">
                 Than GPT-5
-              </p>
-            </motion.div>
+                </p>
+              </motion.div>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -1370,16 +1653,16 @@ const Home = () => {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             {/* Text Content */}
-            <motion.div
+          <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
               className="text-center lg:text-left"
-            >
+          >
               <h2 className="font-display text-4xl md:text-6xl font-bold mb-6">
                 <span className="gradient-text">SQL Editor</span>
-              </h2>
+            </h2>
               <div className="inline-block mb-6 px-4 py-2 glass rounded-full">
                 <span className="text-sm font-medium text-muted-foreground">
                   Format: Command + S
@@ -1560,8 +1843,8 @@ const Home = () => {
                     { x: "25%", y: "70%", delay: 1.5 },
                     { x: "80%", y: "75%", delay: 2 }
                   ].map((point, index) => (
-                    <motion.div
-                      key={index}
+              <motion.div
+                key={index}
                       className="absolute w-3 h-3 bg-primary rounded-full"
                       style={{ left: point.x, top: point.y }}
                       initial={{ scale: 0, opacity: 0 }}
@@ -1652,9 +1935,9 @@ const Home = () => {
       <section className="py-32 relative overflow-hidden">
         <div className="container mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
@@ -1765,7 +2048,7 @@ const Home = () => {
                   </motion.div>
                   <h3 className="font-display text-2xl font-bold gradient-text">
                     Real-time Insights
-                  </h3>
+                </h3>
                 </div>
                 <p className="text-muted-foreground">
                   Get instant answers and visualizations that update in real-time as your data changes.
@@ -1801,67 +2084,35 @@ const Home = () => {
           </div>
         </div>
       </section>
+      
+    {/* Transform with AI Innovation Section */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <HeroVideo />
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center max-w-5xl mx-auto"
+        >
+            <h1 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold mb-6">
+              Transform Your Enterprise with{" "}
+              <span className="gradient-text">AI Innovation</span>
+            </h1>
 
-      {/* CTA Section */}
-      <section className="py-32 relative">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="glass p-12 md:p-20 rounded-3xl text-center max-w-4xl mx-auto glow"
-          >
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-              Ready to Transform Your Enterprise?
-            </h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-primary text-primary-foreground rounded-full font-semibold text-lg inline-flex items-center gap-2"
+                className="group px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold text-lg flex items-center gap-2 glow"
               >
-                Start Your Journey
-                <ArrowRight />
+                Start your journey
+                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </Link>
-          </motion.div>
-        </div>
-      </section>
-      
-    {/* Hero Section (Glitch Inspired) moved to bottom */}
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16">
-        <GlitchBackground />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center max-w-6xl mx-auto">
-            <div className="mb-6">
-              <GlitchText text="SORTBY" playOnce={false} />
-            </div>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-              AI Service as Software — modern systems, measurable outcomes
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/products">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold text-lg flex items-center gap-2 glow"
-                >
-                  Explore Products
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-              </Link>
-              <Link to="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 glass rounded-full font-semibold text-lg"
-                >
-                  Get Started
-                </motion.button>
-              </Link>
-            </div>
           </div>
+          </motion.div>
         </div>
       </section>
 
