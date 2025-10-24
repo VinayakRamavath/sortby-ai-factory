@@ -113,6 +113,35 @@ const Home = () => {
             </div>
           </div>
         </div>
+        
+        {/* Agent Suvira Awaiting Hook - Bottom Left Corner of Section */}
+        <motion.div
+          initial={{ opacity: 0, x: -20, y: 20 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ delay: 2, duration: 0.8 }}
+          className="absolute bottom-8 left-8 z-20"
+        >
+          <div className="inline-block px-6 py-3 glass rounded-full border border-primary/30 bg-primary/10 shadow-lg">
+            <motion.div
+              animate={{ 
+                scale: [1, 1.05, 1],
+                opacity: [0.8, 1, 0.8]
+              }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="flex items-center gap-3"
+            >
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+              <span className="text-sm font-semibold text-primary">
+                Agent Suvira awaiting
+              </span>
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+            </motion.div>
+          </div>
+        </motion.div>
       </section>
 
       {/* AI Service as Software Dropdown Content */}
