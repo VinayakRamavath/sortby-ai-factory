@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Zap, Target, Rocket, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowRight, Zap, Target, Rocket, ChevronDown, ChevronUp, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Hero3D from "@/components/Hero3D";
@@ -44,6 +44,7 @@ import platform from "../assets/platform.png";
 
 const Home = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isAboutSuviraOpen, setIsAboutSuviraOpen] = useState(false);
 
   const features = [
     {
@@ -554,15 +555,14 @@ const Home = () => {
                   
                   {/* Action Buttons */}
                   <div className="flex justify-center items-center gap-4 mt-8">
-                    <Link to="/products/suvira">
                 <motion.button
+                      onClick={() => setIsAboutSuviraOpen(true)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                        className="px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-base hover:bg-primary/90 transition-all duration-300 glow"
+                      className="px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-base hover:bg-primary/90 transition-all duration-300 glow"
                 >
-                        About Suvira
+                      About Suvira
                 </motion.button>
-              </Link>
                     
                     <Link to="/products/suvira">
                 <motion.button
@@ -2144,6 +2144,141 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* About Suvira Modal */}
+      {isAboutSuviraOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setIsAboutSuviraOpen(false)}
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="bg-gradient-to-b from-background to-muted/20 rounded-2xl border border-primary/20 shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-end p-6 border-b border-primary/10">
+              <motion.button
+                onClick={() => setIsAboutSuviraOpen(false)}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="p-2 rounded-full hover:bg-muted/50 transition-colors"
+              >
+                <X className="w-5 h-5 text-slate-400" />
+              </motion.button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 space-y-8">
+              {/* Hero Section */}
+              <div className="text-center">
+                <h3 className="font-display text-3xl font-bold mb-8 text-center">
+                  AI-POWERED BUSINESS ANALYTICS ACROSS ALL YOUR <span className="gradient-text">COMPANY'S DATA</span>
+                </h3>
+                <p className="text-lg text-muted-foreground mb-8 text-center max-w-4xl mx-auto">
+                  Seamlessly integrate with your data systems to deliver real-time analytics, surface critical insights, and support high-impact decision-making accelerating performance across operations, strategy, and growth.
+                </p>
+              </div>
+
+              {/* Main Features Grid */}
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* One Platform, All Your Data */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="bg-gradient-to-br from-blue-500/10 to-cyan-500/5 p-6 rounded-xl border border-blue-500/20"
+                >
+                  <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+                    <Zap className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <h4 className="font-display text-xl font-bold text-white mb-3">One Platform, All Your Data</h4>
+                  <p className="text-slate-300 mb-4">
+                    Suvira connects directly to your databases, warehouses, and business applications. No complex integrations. No data migration. Just plug in your data sources and start asking questions.
+                  </p>
+                  <p className="text-slate-400 text-sm">
+                    Whether your data lives in Snowflake, Salesforce, Google Analytics, or dozens of other systems, Suvira brings it all together in one place. Your team gets a single source of truth without the typical setup headaches.
+                  </p>
+                </motion.div>
+
+                {/* Analytics For Everyone */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="bg-gradient-to-br from-emerald-500/10 to-green-500/5 p-6 rounded-xl border border-emerald-500/20"
+                >
+                  <div className="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center mb-4">
+                    <Target className="w-6 h-6 text-emerald-400" />
+                  </div>
+                  <h4 className="font-display text-xl font-bold text-white mb-3">Analytics For Everyone, Not Just Analysts</h4>
+                  <p className="text-slate-300 mb-4">
+                    You shouldn't need to know SQL or wait on your data team to get answers. With Suvira, anyone on your team can ask questions in plain English and get instant insights.
+                  </p>
+                  <div className="space-y-2 text-slate-400 text-sm">
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+                      <span>Sales teams check pipeline health</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+                      <span>Marketing reviews campaign performance</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+                      <span>Operations spots bottlenecks</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+                      <span>Finance tracks key metrics</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Key Benefits */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-6 rounded-xl border border-purple-500/20"
+              >
+                <h4 className="font-display text-xl font-bold text-white mb-4 text-center">All in Real-Time, Without Writing a Single Line of Code</h4>
+                <div className="grid sm:grid-cols-3 gap-4 text-center">
+                  <div className="p-4 bg-slate-800/50 rounded-lg">
+                    <div className="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <Rocket className="w-4 h-4 text-purple-400" />
+                    </div>
+                    <h5 className="font-display font-semibold text-white mb-1">Instant Insights</h5>
+                    <p className="text-sm text-slate-400">Get answers in seconds, not hours</p>
+                  </div>
+                  <div className="p-4 bg-slate-800/50 rounded-lg">
+                    <div className="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <Zap className="w-4 h-4 text-purple-400" />
+                    </div>
+                    <h5 className="font-display font-semibold text-white mb-1">No Code Required</h5>
+                    <p className="text-sm text-slate-400">Plain English questions only</p>
+                  </div>
+                  <div className="p-4 bg-slate-800/50 rounded-lg">
+                    <div className="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <Target className="w-4 h-4 text-purple-400" />
+                    </div>
+                    <h5 className="font-display font-semibold text-white mb-1">Team-Wide Access</h5>
+                    <p className="text-sm text-slate-400">Everyone can ask questions</p>
+                  </div>
+                </div>
+              </motion.div>
+
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
 
       
     </div>
